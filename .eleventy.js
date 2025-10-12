@@ -2,7 +2,7 @@ module.exports = function(eleventyConfig) {
   // Copy static assets to output
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/assets");
-  
+
   // Add date filter for nice formatting
   eleventyConfig.addFilter("dateDisplay", (dateObj) => {
     return new Date(dateObj).toLocaleDateString("en-US", {

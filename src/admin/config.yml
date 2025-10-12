@@ -12,7 +12,7 @@ backend:
     openAuthoring: '{{message}}'
 
 # When running locally, use: local_backend: true
-# For production, comment out the line below after adding your client_id
+# For production, local_backend should be commented out
 # local_backend: true
 
 media_folder: "src/assets/images"
