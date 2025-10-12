@@ -1,8 +1,10 @@
 backend:
   name: github
-  repo: okaluna/web
+  repo: okaluna/okaluna.github.io
   branch: main
   client_id: Ov23liGApI7VMc5Mc7dE
+  base_url: https://api.decapcms.org
+  auth_endpoint: auth
   commit_messages:
     create: 'Create {{collection}} "{{slug}}"'
     update: 'Update {{collection}} "{{slug}}"'

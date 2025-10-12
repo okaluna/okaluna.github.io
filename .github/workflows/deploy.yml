@@ -9,9 +9,9 @@ on:
     workflow_dispatch:
         inputs:
             reason:
-                description: 'Reason for manual deployment'
+                description: "Reason for manual deployment"
                 required: false
-                default: 'Manual deployment'
+                default: "Manual deployment"
                 type: string
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
