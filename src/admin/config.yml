@@ -3,7 +3,7 @@ backend:
   repo: okaluna/okaluna.github.io
   branch: main
   client_id: Ov23liGApI7VMc5Mc7dE
-  base_url: https://api.decapcms.org
+  base_url: https://gitlab.com
   auth_endpoint: auth
   commit_messages:
     create: 'Create {{collection}} "{{slug}}"'

@@ -6,7 +6,8 @@
     "scripts": {
         "build": "eleventy",
         "dev": "eleventy --serve",
-        "clean": "rm -rf _site"
+        "clean": "rm -rf _site",
+        "proxy": "decap-server"
     },
     "keywords": [
         "jamstack",
@@ -17,7 +18,8 @@
     "author": "okaluna",
     "license": "MIT",
     "devDependencies": {
-        "@11ty/eleventy": "^2.0.1"
+        "@11ty/eleventy": "^2.0.1",
+        "decap-server": "^3.3.1"
     },
     "engines": {
         "node": ">=18"
