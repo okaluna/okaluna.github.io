@@ -6,96 +6,671 @@
     <title>{{ title or "Okaluna" }}</title>
     <meta name="description" content="{{ description or 'A modern web publishing platform' }}">
 
-    <!-- Basic styling -->
+    <!-- Kid-Friendly Creative Design -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Fredoka:wght@300;400;500;600&display=swap');
+
+        :root {
+            --pastel-pink: #FFE4E6;
+            --pastel-blue: #E0F4FF;
+            --pastel-purple: #F0E6FF;
+            --pastel-green: #E6FFE6;
+            --pastel-yellow: #FFF9E6;
+            --pastel-coral: #FFE6D9;
+            --soft-mint: #E6FFF2;
+            --lavender: #F5E6FF;
+
+            --text-primary: #4A5568;
+            --text-secondary: #718096;
+            --accent-primary: #9F7AEA;
+            --accent-secondary: #F093FB;
+
+            --shadow-soft: 0 4px 12px rgba(159, 122, 234, 0.15);
+            --shadow-hover: 0 8px 25px rgba(159, 122, 234, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
+            margin: 0;
             padding: 20px;
-            color: #333;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, var(--pastel-pink) 0%, var(--pastel-blue) 25%, var(--soft-mint) 50%, var(--pastel-yellow) 75%, var(--lavender) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
         header {
-            border-bottom: 2px solid #eee;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
+            background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23ffffff20"/><circle cx="50" cy="30" r="1.5" fill="%23ffffff15"/><circle cx="80" cy="40" r="2.5" fill="%23ffffff10"/><circle cx="30" cy="60" r="1" fill="%23ffffff25"/><circle cx="70" cy="70" r="2" fill="%23ffffff20"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(0deg) translateX(10px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(10px) rotate(-360deg); }
         }
 
         h1 {
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
+            font-family: 'Fredoka', sans-serif;
+            color: var(--accent-primary);
+            margin: 0;
+            font-size: 3rem;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        h1 a:hover {
+            transform: scale(1.05);
+            display: inline-block;
+        }
+
+        nav {
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         nav ul {
             list-style: none;
             padding: 0;
             display: flex;
+            justify-content: center;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
         nav a {
-            color: #3498db;
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--accent-primary);
             text-decoration: none;
-            padding: 0.5rem;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(159, 122, 234, 0.2);
+            border: 2px solid transparent;
         }
 
         nav a:hover {
-            background: #f8f9fa;
-            border-radius: 4px;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-hover);
+            background: white;
+            border-color: var(--accent-secondary);
         }
 
         main {
-            margin: 2rem 0;
+            padding: 3rem;
+            position: relative;
+        }
+
+        h2, h3 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--accent-primary);
+            position: relative;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .post-meta {
-            color: #666;
+            color: var(--text-secondary);
             font-size: 0.9rem;
             margin-bottom: 1rem;
+            padding: 8px 16px;
+            background: var(--pastel-yellow);
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 500;
         }
 
         .post-list {
             list-style: none;
             padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
         .post-list li {
-            margin-bottom: 1rem;
-            padding: 1rem;
-            border: 1px solid #eee;
-            border-radius: 4px;
+            background: white;
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid transparent;
+        }
+
+        .post-list li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--pastel-coral), var(--pastel-purple), var(--pastel-blue));
+        }
+
+        .post-list li:nth-child(odd) {
+            background: linear-gradient(135deg, var(--pastel-green) 0%, rgba(255,255,255,0.9) 100%);
+        }
+
+        .post-list li:nth-child(even) {
+            background: linear-gradient(135deg, var(--pastel-blue) 0%, rgba(255,255,255,0.9) 100%);
+        }
+
+        .post-list li:hover {
+            transform: translateY(-8px) rotate(1deg);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-secondary);
+        }
+
+        .post-list h3 {
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+
+        .post-list h3 a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .post-list h3 a:hover {
+            color: var(--accent-secondary);
+        }
+
+        .post-list p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        .creativity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .creativity-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .creativity-item:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .creativity-item:nth-child(1) { background: linear-gradient(135deg, var(--pastel-pink), white); }
+        .creativity-item:nth-child(2) { background: linear-gradient(135deg, var(--pastel-blue), white); }
+        .creativity-item:nth-child(3) { background: linear-gradient(135deg, var(--pastel-green), white); }
+        .creativity-item:nth-child(4) { background: linear-gradient(135deg, var(--pastel-yellow), white); }
+
+        .fun-button {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-soft);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .fun-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-hover);
         }
 
         footer {
-            border-top: 1px solid #eee;
-            margin-top: 3rem;
-            padding-top: 1rem;
+            background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-coral));
+            padding: 2rem;
             text-align: center;
-            color: #666;
+            color: var(--text-secondary);
             font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            color: var(--accent-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            main {
+                padding: 2rem 1.5rem;
+            }
+
+            .post-list {
+                grid-template-columns: 1fr;
+            }
+
+            .creativity-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        /* Fun animations for creative elements */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .bounce-on-hover:hover {
+            animation: bounce 0.6s ease;
+        }
+
+        /* Sparkle animation */
+        @keyframes sparkle {
+            0% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+            100% { opacity: 0; transform: scale(0) rotate(360deg); }
+        }
+
+        .sparkle::after {
+            content: '✨';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            animation: sparkle 2s infinite;
+        }
+
+        /* Wiggle animation for fun elements */
+        @keyframes wiggle {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(3deg); }
+            75% { transform: rotate(-3deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .wiggle:hover {
+            animation: wiggle 0.5s ease-in-out;
+        }
+
+        /* Pulse effect for important buttons */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(159, 122, 234, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(159, 122, 234, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(159, 122, 234, 0); }
+        }
+
+        .fun-button:hover {
+            animation: pulse 1s infinite;
+        }
+
+        /* Rainbow text animation */
+        @keyframes rainbow {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .rainbow-text {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow 3s ease-in-out infinite;
+        }
+
+        /* Floating hearts */
+        @keyframes float-heart {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-heart {
+            position: absolute;
+            color: #ff6b9d;
+            font-size: 20px;
+            animation: float-heart 6s linear infinite;
+        }
+
+        /* Click ripple effect */
+        @keyframes ripple {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(4); opacity: 0; }
+        }
+
+        .ripple-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple-effect::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .ripple-effect:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Confetti animation for celebrations */
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(720deg); }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff6b6b;
+            animation: confetti-fall 3s linear infinite;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .confetti:nth-child(1) { left: 10%; animation-delay: 0s; background: #ff6b6b; }
+        .confetti:nth-child(2) { left: 20%; animation-delay: 0.5s; background: #4ecdc4; }
+        .confetti:nth-child(3) { left: 30%; animation-delay: 1s; background: #45b7d1; }
+        .confetti:nth-child(4) { left: 40%; animation-delay: 1.5s; background: #96ceb4; }
+        .confetti:nth-child(5) { left: 50%; animation-delay: 2s; background: #feca57; }
+        .confetti:nth-child(6) { left: 60%; animation-delay: 2.5s; background: #ff9ff3; }
+        .confetti:nth-child(7) { left: 70%; animation-delay: 0.3s; background: #ff6b6b; }
+        .confetti:nth-child(8) { left: 80%; animation-delay: 0.8s; background: #4ecdc4; }
+        .confetti:nth-child(9) { left: 90%; animation-delay: 1.3s; background: #45b7d1; }
+
+        /* Magic cursor trail */
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(159, 122, 234, 0.8), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            animation: fade-out 1s ease-out forwards;
+        }
+
+        @keyframes fade-out {
+            from { opacity: 1; transform: scale(1); }
+            to { opacity: 0; transform: scale(0); }
+        }
+
+        /* Special styles for different content types */
+        .game-card {
+            border-left: 6px solid #ff6b6b !important;
+            position: relative;
+        }
+
+        .game-card::before {
+            content: '🎮';
+            position: absolute;
+            top: -10px;
+            left: -15px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .art-card {
+            border-left: 6px solid #4ecdc4 !important;
+        }
+
+        .art-card::before {
+            content: '🎨';
+            position: absolute;
+            top: -10px;
+            left: -15px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .story-card {
+            border-left: 6px solid #feca57 !important;
+        }
+
+        .story-card::before {
+            content: '📚';
+            position: absolute;
+            top: -10px;
+            left: -15px;
+            font-size: 2rem;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-soft);
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1><a href="/" style="text-decoration: none; color: inherit;">Okaluna</a></h1>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/posts/">Blog</a></li>
-                <li><a href="/admin/">Admin</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="container">
+        <header>
+            <h1 class="bounce-on-hover"><a href="/">🌟 Okaluna Kids 🌈</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/" class="bounce-on-hover">🏠 Home</a></li>
+                    <li><a href="/posts/" class="bounce-on-hover">🎨 Creative Posts</a></li>
+                    <li><a href="/admin/" class="bounce-on-hover">✏️ Create</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <main>
-        {{ content | safe }}
-    </main>
+        <main>
+            {{ content | safe }}
+        </main>
 
     <footer>
+        <p>✨ Made with love for creative kids! ✨</p>
         <p>Powered by <a href="https://www.11ty.dev/">Eleventy</a> and <a href="https://decapcms.org/">Decap CMS</a></p>
     </footer>
+</div>
+
+<!-- Fun Interactive JavaScript -->
+<script>
+    // Create floating hearts randomly
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.innerHTML = '💖';
+        heart.className = 'floating-heart';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+
+    // Create hearts every few seconds
+    setInterval(createHeart, 3000);
+
+    // Cursor trail effect
+    let mouseTrails = [];
+    document.addEventListener('mousemove', function(e) {
+        if (mouseTrails.length > 5) {
+            mouseTrails.shift().remove();
+        }
+
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        trail.style.left = e.clientX - 10 + 'px';
+        trail.style.top = e.clientY - 10 + 'px';
+        document.body.appendChild(trail);
+        mouseTrails.push(trail);
+
+        setTimeout(() => {
+            trail.remove();
+            mouseTrails = mouseTrails.filter(t => t !== trail);
+        }, 1000);
+    });
+
+    // Add click sound effect (visual feedback)
+    document.addEventListener('click', function(e) {
+        const clickEffect = document.createElement('div');
+        clickEffect.innerHTML = '✨';
+        clickEffect.style.position = 'fixed';
+        clickEffect.style.left = e.clientX - 10 + 'px';
+        clickEffect.style.top = e.clientY - 10 + 'px';
+        clickEffect.style.fontSize = '20px';
+        clickEffect.style.pointerEvents = 'none';
+        clickEffect.style.zIndex = '1000';
+        clickEffect.style.animation = 'sparkle 0.8s ease-out forwards';
+        document.body.appendChild(clickEffect);
+
+        setTimeout(() => {
+            clickEffect.remove();
+        }, 800);
+    });
+
+    // Add wiggle effect to emojis
+    document.addEventListener('DOMContentLoaded', function() {
+        const emojis = document.querySelectorAll('h1, h2, h3');
+        emojis.forEach(emoji => {
+            emoji.classList.add('wiggle');
+        });
+
+        // Randomly categorize posts with visual indicators
+        const postItems = document.querySelectorAll('.post-list li');
+        const cardTypes = ['game-card', 'art-card', 'story-card'];
+        postItems.forEach(item => {
+            const randomType = cardTypes[Math.floor(Math.random() * cardTypes.length)];
+            item.classList.add(randomType);
+        });
+    });
+
+    // Celebration confetti on button clicks
+    function createConfetti() {
+        for (let i = 0; i < 15; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
+    }
+
+    // Add confetti to fun buttons
+    document.addEventListener('DOMContentLoaded', function() {
+        const funButtons = document.querySelectorAll('.fun-button');
+        funButtons.forEach(button => {
+            button.addEventListener('click', createConfetti);
+        });
+    });
+
+    // Add rainbow text effect to main title
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainTitle = document.querySelector('h1 a');
+        if (mainTitle) {
+            mainTitle.classList.add('rainbow-text');
+        }
+    });
+</script>
 </body>
 </html>

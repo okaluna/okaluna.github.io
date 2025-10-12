@@ -2,7 +2,6 @@ backend:
   name: github
   repo: okaluna/okaluna.github.io
   branch: main
-  client_id: Ov23liGApI7VMc5Mc7dE
   commit_messages:
     create: 'Create {{collection}} "{{slug}}"'
     update: 'Update {{collection}} "{{slug}}"'
