@@ -12,6 +12,11 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // Create posts collection
+  eleventyConfig.addCollection("posts", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/posts/*.md");
+  });
+
   // Configure input and output directories
   return {
     dir: {
