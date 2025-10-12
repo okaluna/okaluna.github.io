@@ -35,6 +35,8 @@
             --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
             --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
             --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+
+            --body-padding: 20px;
         }
 
         * {
@@ -45,7 +47,7 @@
             font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             margin: 0;
-            padding: 20px;
+            padding: var(--body-padding);
             color: var(--text-primary);
             background: #f8fafc;
             min-height: 100vh;
@@ -53,6 +55,11 @@
 
         .container {
             max-width: 1200px;
+            min-height: calc(100vh - (var(--body-padding) * 2));
+            display: flex;
+            flex-direction: column;
+
+
             margin: 0 auto;
             background: var(--bg-primary);
             border-radius: 12px;
@@ -63,7 +70,6 @@
         header {
             background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--bg-primary) 100%);
             border-bottom: 1px solid #bfdbfe;
-            padding: 2rem;
             text-align: center;
         }
 
@@ -74,6 +80,8 @@
             font-size: 2.5rem;
             font-weight: 600;
             position: relative;
+
+            margin: 0 0 1.5rem;
         }
 
         h1::after {
@@ -128,10 +136,6 @@
             border-color: var(--accent-primary);
         }
 
-        main {
-            padding: 3rem;
-        }
-
         h2, h3 {
             font-family: 'Fredoka', sans-serif;
             color: var(--text-primary);
@@ -162,26 +166,20 @@
 
         .post-list {
             list-style: none;
-            padding: 0;
+            padding: 20px;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 1.5rem;
-            margin-top: 2rem;
+            margin: 0;
         }
 
         .post-list li {
             background: var(--bg-primary);
             padding: 1.5rem;
-            border-radius: 8px;
             box-shadow: var(--shadow-soft);
             transition: all 0.2s ease;
             border: 1px solid var(--border-light);
-        }
-
-        .post-list li:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-            border-color: var(--border-medium);
+            border-radius: 12px;
         }
 
         .post-list h3 {
@@ -332,6 +330,10 @@
             color: var(--accent-hover);
         }
 
+        main {
+            flex: 1;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             body {
@@ -360,30 +362,20 @@
             }
         }
 
-        /* Clean, subtle styling for content types */
-        .post-list li:nth-child(3n+1) {
-            border-left: 3px solid var(--accent-primary);
-            background: linear-gradient(135deg, var(--pastel-purple) 0%, var(--bg-primary) 100%);
-        }
-
-        .post-list li:nth-child(3n+2) {
-            border-left: 3px solid var(--accent-secondary);
-            background: linear-gradient(135deg, var(--pastel-pink) 0%, var(--bg-primary) 100%);
-        }
-
-        .post-list li:nth-child(3n+3) {
-            border-left: 3px solid #10b981;
-            background: linear-gradient(135deg, var(--pastel-green) 0%, var(--bg-primary) 100%);
-        }
-
         /* Hero Section */
         .hero {
             position: relative;
-            margin: 0 auto 3rem;
+            margin: 0 auto;
             border-radius: 18px;
             overflow: hidden;
             background: #dbeafe;
             box-shadow: var(--shadow-medium);
+        }
+        /* Full-width variant inside padded main area */
+        .hero.hero--bleed {
+            border-radius: 0;
+            box-shadow: none;
+            max-width: none;
         }
         .hero__bg {
             position: absolute;
@@ -435,7 +427,24 @@
 <body>
     <div class="container">
         <header>
-            <h1><a href="/">OkaLuna</a></h1>
+            <!-- Global Hero Intro moved from index.md -->
+            <section class="hero hero--bleed" aria-labelledby="intro-heading">
+              <div class="hero__bg" role="img" aria-hidden="true"></div>
+              <div class="hero__veil" aria-hidden="true"></div>
+              <div class="hero__content">
+                <h1><a href="/">OkaLuna</a></h1>
+                <h2 id="intro-heading" class="visually-hidden">Creative Outpost</h2>
+                <p>
+                  Somewhere beyond the quiet screen glow, a patchwork realm drifts in slow orbit – mist valleys,
+                  soft peaks and doorways of light. Lantern spores wander over forgotten paths while distant
+                  clockwork groves breathe in hush cycles. You pause at a ridge of pale stone: below, small camps
+                  of ideas flicker — sketches, loops, half‑built engines, music seeds. Their signals rise like
+                  fireflies threading a map. Step lightly. Look closely. The little worlds are waking.
+                  <span class="whisper">Scroll onward to enter the camps.</span>
+                </p>
+                <span class="visually-hidden">Background illustration: dreamy misty valley with soft glowing doorways and distant hills.</span>
+              </div>
+            </section>
         </header>
 
         <main>
@@ -447,22 +456,5 @@
             <p>Made with care <span style="color: var(--accent-primary);">•</span></p>
         </footer>
     </div>
-
-<!-- Clean, performance-focused JavaScript -->
-<script>
-    // Simple, subtle interactions only
-    document.addEventListener('DOMContentLoaded', function() {
-        // Add smooth scrolling for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-    });
-</script>
 </body>
 </html>
