@@ -3,8 +3,8 @@ backend:
   repo: okaluna/okaluna.github.io
   branch: main
   client_id: Ov23liGApI7VMc5Mc7dE
-  base_url: https://gitlab.com
-  auth_endpoint: auth
+  base_url: https://github.com
+  auth_endpoint: login/oauth
   commit_messages:
     create: 'Create {{collection}} "{{slug}}"'
     update: 'Update {{collection}} "{{slug}}"'
