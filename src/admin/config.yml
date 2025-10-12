@@ -3,6 +3,9 @@ backend:
   repo: okaluna/okaluna.github.io
   branch: main
   client_id: Ov23liGApI7VMc5Mc7dE
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+  site_domain: dd457651-a568-401a-aa01-832b4a8aa443
   commit_messages:
     create: 'Create {{collection}} "{{slug}}"'
     update: 'Update {{collection}} "{{slug}}"'

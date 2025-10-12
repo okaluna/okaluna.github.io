@@ -8,7 +8,7 @@ description: "This is a sample blog post to demonstrate the system"
 # {{ title }}
 
 <div class="post-meta">
-Published on {{ date | dateDisplay }}
+Published on {{ date }}
 </div>
 
 Welcome to your first blog post! This sample post demonstrates how content works in your new Jamstack publishing system.
