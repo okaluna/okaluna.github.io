@@ -1,8 +1,10 @@
 ---
 layout: base.njk
-title: "Sample Blog Post"
-date: 2024-10-12
-description: "This is a sample blog post to demonstrate the system"
+title: Test how this works
+description: This is a sample blog post to demonstrate the system
+date: 2025-10-12T17:41:00.000+02:00
+tags:
+  - TestTag
 ---
 
 # {{ title }}
