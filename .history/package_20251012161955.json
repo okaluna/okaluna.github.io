@@ -1,0 +1,25 @@
+{
+    "name": "okaluna-web",
+    "version": "1.0.0",
+    "description": "A modern Jamstack website with Eleventy, Decap CMS, and GitHub Pages",
+    "main": "index.js",
+    "scripts": {
+        "build": "eleventy",
+        "dev": "eleventy --serve",
+        "clean": "rm -rf _site"
+    },
+    "keywords": [
+        "jamstack",
+        "eleventy",
+        "decap-cms",
+        "github-pages"
+    ],
+    "author": "okaluna",
+    "license": "MIT",
+    "devDependencies": {
+        "@11ty/eleventy": "^2.0.1"
+    },
+    "engines": {
+        "node": ">=18"
+    }
+}
