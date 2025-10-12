@@ -334,6 +334,12 @@
             flex: 1;
         }
 
+        /* Individual post page styles */
+        .post-content { padding: 0 2rem 2.5rem; }
+        @media (max-width: 640px){ .post-content { padding: 0 1.25rem 2rem; } }
+        .post-content > *:first-child { margin-top: 0; }
+        .post-content > *:last-child { margin-bottom: 0; }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             body {
@@ -421,6 +427,18 @@
         }
         @media (max-width: 640px) {
             .hero__content p { font-size: 1rem; }
+        }
+
+        .embed { margin: 2rem auto; text-align:center; }
+        .embed iframe { display:block; margin:0 auto; border:0; border-radius:12px; box-shadow: var(--shadow-medium); background:#000; }
+        /* Responsive scaling: wrap fixed Scratch size inside fluid container */
+        .embed--scratch { max-width: 500px; }
+        .embed--scratch iframe { width:100%; height:auto; aspect-ratio:485/402; }
+        @supports not (aspect-ratio: 1/1) {
+            .embed--scratch iframe { height: 402px; }
+        }
+        @media (max-width:540px){
+            .embed--scratch { max-width:100%; }
         }
     </style>
 </head>
