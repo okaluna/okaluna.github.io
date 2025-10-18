@@ -1,7 +1,7 @@
 ---
 layout: base.njk
-title: "Scratch Project #4"
-description: "Spacebar to jump."
+title: Gato Saltando
+description: Spacebar to jump.
 date: 2025-10-12T12:00:00+00:00
 tags:
   - Scratch
